@@ -12,6 +12,6 @@ public class getAttributeValueIs {
 		String username = driver.findElement(By.id("email")).getAttribute("id");
 		System.out.println("Attribute name id value is ="+username);
 		String passsword = driver.findElement(By.id("pass")).getAttribute("id");
-		System.out.println("Attributr name id vallue is ="+passsword);
+		System.out.println("Attribute name id value is ="+passsword);
 	}
 }
