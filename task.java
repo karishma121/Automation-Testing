@@ -1,39 +1,54 @@
-package checkBoxesHandle;
+package actionsClass;
 
 import java.util.List;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 
 public class task {
 
 	public static void main(String[]args) {
-		WebDriver driver = new ChromeDriver();
+	WebDriver driver = new ChromeDriver();
+	 driver.get("http://swisnl.github.io/jQuery-contextMenu/demo.html");
+	 driver.manage().window().maximize();
+	 WebElement button = driver.findElement(By.xpath("//span[@class='context-menu-one btn btn-neutral']"));
+	 
+	 Actions act = new Actions(driver);
+	 act.contextClick(button).perform();
+	 
+	 List<WebElement> options = driver.findElements(By.xpath("//ul[@class='context-menu-list context-menu-root']/li"));
+	
 		
-		//launch URL
-		driver.get("https://total-qa.com/checkbox-example/");
+		int opt1 = options.size();
 		
-		// store webelement in list
 		
-		List<WebElement> checkBox1 = driver.findElements(By.xpath("//input[@type='checkbox']"));
-		
-		//to check box size
-		
-			for(int i=0;i<checkBox1.size();i++) {
+	 for (int i=0;i<opt1;i++) {
 			
-				//to check checkbox is selected or not 
-				boolean check1 = checkBox1.get(i).isSelected();
+			WebElement element = options.get(i);
 			
-				if(check1==false) {
-					
-					checkBox1.get(i).click();
-				}
-		}
+			String value = element.getText();
 			
+			System.out.println(value);
+			
+			if(value.equals("Edit")){
+				
+				
+				Actions a2 = new Actions(driver);
+				a2.click(element).perform();
 
-		
-		
+				//Alert action = driver.switchTo().alert();
+				//action.accept();
+			
+			}
+	
+			}
+	 
+	 
+	 	
 	}
 }
