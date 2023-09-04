@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="BuildTest" parallel="tests">
+	<test thread-count="5" name="functionalTesting1">
+		<classes>
+
+			<class name="groupTest_NG.orangeTest"></class>
+		</classes>
+	</test> <!--Test -->
+
+	<test name="smokeTesting">
+		<classes>
+			<class name="groupTest_NG.orangeTest">
+
+			</class>
+		</classes>
+	</test>
+
+
+</suite> 
